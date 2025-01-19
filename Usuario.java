@@ -1,16 +1,14 @@
-import java.util.List;
+package projetinho;
+
 public class Usuario {
-    private String nome;
-    private List<ReceitasFavoritadas>receitasFavoritadas;
-    private String email;
-    public void guardarReceita(Receita receitasFavoritadas){
-
-    }
-    public void deletarReceita(Receita receitasFavoritadas){
-
-    }
-    public void compartilharReceitas(Receita receita, String email){
-        
-    }
-    
+String nome;
+String minhasReceitas;
+public Usuario(String nome, String minhasReceitas){
+this.nome=nome;
+this.minhasReceitas=minhasReceitas;
 }
+public void  minhasReceitas(String Receita){
+minhasReceitas=Receita;
+}
+}
+
