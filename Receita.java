@@ -1,41 +1,26 @@
+package projetinho.com;
+
 import java.util.List;
+
+import projetinho.Ingrediente;
+
 public class Receita {
-    String nome;
     String modoDePreparo;
-    int porcoes;
-    String List<Ingrediente>ingredientes;
-    public Receita( String nome, int porcoes, String modoDePreparo, String List<Ingrediente> ingredientes){
-        this.nome=nome;
+    double porcoes;
+    List<Ingrediente>ingredientes;
+    public Receita(String modoDePreparo, double porcoes, List<Ingrediente>ingredientes){
+        this.modoDePreparo=modoDePreparo;
         this.porcoes=porcoes;
-        this.modoDePreparo=modoDePreparo;
-        this.ingrediente=ingrediente;
+        this.ingredientes=ingredientes;
     }
-    public void adicionarIngrediente(List<Ingrediente> ingredientes){
-        ingrediente++;
+    public void addIngrediente(Ingrediente ingrediente){
+        this.ingredientes.add(ingrediente);
     }
-    public void removerIngrediente(List<Ingrediente> ingredientes){
-        ingrediente--;
-    }
-    public alterarQtdPorcoes(int novasPorcoes){
-        porcoes++;
-    }
-    public void exibirModoDePreparo(){
-        System.out.println("Modo de Preparo:"+modoDePreparo);
+    public void removeIngredient(Ingrediente ingrediente){
+        this.ingredientes.remove(ingrediente);
+    }   
 
-    }
-    public String setNome(){
-        this.nome=nome;
-    }
-    public String getNome(){
-        return nome;
 
-    }
-    public String setModoDePreparo(){
-        this.modoDePreparo=modoDePreparo;
-    }
-    public String getModoDePreparo(){
-        return modoDePreparo;
 
-    }
 
 }
