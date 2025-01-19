@@ -7,9 +7,7 @@ public class Ingrediente {
         this.quantidade=quantidade;
         this.unidadeDeMedida=unidadeDeMedida;
     }
-    public void alterarQuantidade(double novaQuantidade){
-
-    }
+    
     public String toString(){
         return nome + "("+ quantidade +"  "+ unidade +")";
 
