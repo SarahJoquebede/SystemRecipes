@@ -1,0 +1,38 @@
+Import java util ArrayList;
+Import java.util.List;
+  Public class main{ 
+public static void main(String[] args) {
+
+Ingrediente ingrediente1 = new Ingrediente("ovos", 6, "unidades");
+        Ingrediente ingrediente2 = new Ingrediente("Goma de tapioca hidratada", 200, "gramas");
+        Ingrediente ingrediente3 = new Ingrediente("Requeijão cremoso", 2, "colheres");
+        Ingrediente ingrediente4 = new Ingrediente("frango desfiado”,150 , "gramas");
+ Ingrediente ingrediente5 = new Ingrediente("tomate", 1, "unidade");
+Ingrediente ingrediente6 = new Ingrediente("Milho verde", 100, "gramas");
+List<Ingrediente> ingredientes = new ArrayList<>();
+        ingredientes.add(ingrediente1);
+        ingredientes.add(ingrediente2);
+        ingredientes.add(ingrediente3);
+        ingredientes.add(ingrediente4);
+        ingredientes.add(ingrediente5);
+        ingredientes.add(ingrediente6);
+        
+        
+        Receita receita = new Receita("Misture os primeiros 3 ingredientes, coloque tudo em uma frigideira já quente e vire para o outro lado quando estiver bom", 1, ingredientes);
+
+receita.addIngrediente(new Ingrediente("oregano", 1, "colher de chá"));
+
+
+        System.out.println("Receita:");
+        System.out.println("Modo de preparo: " + receita.modoDePreparo);
+        System.out.println("Porções: " + receita.porcoes);
+        System.out.println("Ingredientes:");
+        for (Ingrediente ingrediente : receita.ingredientes) {
+            System.out.println(ingrediente);
+
+
+Usuario usuario= new Usuario(“Julia”,”tapioca recheada”){
+System.out.println(“nome do usuário:” + usuario.nome);
+System.out.println(“receitas favoritas:” + usuario minhasReceitas);
+}
+}
