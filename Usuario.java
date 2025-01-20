@@ -1,14 +1,23 @@
 package projetinho;
 
-public class Usuario {
-String nome;
-String minhasReceitas;
-public Usuario(String nome, String minhasReceitas){
-this.nome=nome;
-this.minhasReceitas=minhasReceitas;
-}
-public void  minhasReceitas(String Receita){
-minhasReceitas=Receita;
-}
-}
+import java.util.List;
 
+public class Receita {
+    String modoDePreparo;
+    double porcoes;
+    List<Ingrediente> ingredientes;
+
+    public Receita(String modoDePreparo, double porcoes, List<Ingrediente> ingredientes) {
+        this.modoDePreparo = modoDePreparo;
+        this.porcoes = porcoes;
+        this.ingredientes = ingredientes;
+    }
+
+    public void addIngrediente(Ingrediente ingrediente) {
+        this.ingredientes.add(ingrediente);
+    }
+
+    public void removeIngrediente(Ingrediente ingrediente) {
+        this.ingredientes.remove(ingrediente);
+    }
+}
