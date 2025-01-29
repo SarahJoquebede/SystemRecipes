@@ -8,10 +8,14 @@ public class Receita {
     String modoDePreparo;
     double porcoes;
     List<Ingrediente>ingredientes;
-    public Receita(String modoDePreparo, double porcoes, List<Ingrediente>ingredientes){
+    String origem;
+    String tempoDePreparo;
+    public Receita(String modoDePreparo, double porcoes, List<Ingrediente>ingredientes, String origem, String tempoDePreparo){
         this.modoDePreparo=modoDePreparo;
         this.porcoes=porcoes;
         this.ingredientes=ingredientes;
+        this.origem=origem;
+        this.tempoDePreparo=tempoDePreparo;
     }
     public String getModoDePreparo(){
         return modoDePreparo;
@@ -24,6 +28,18 @@ public class Receita {
     }
     public void setPorcoes(double porcoes){
         this.porcoes=porcoes;
+    }
+    public void setOrigem(String origem){
+        this.origem=origem;
+    }
+    public String getOrigem(){
+        return origem;
+    }
+    public void setTempoDePreparo(String tempoDePreparo){
+        this.tempoDePreparo=tempoDePreparo;
+    }
+    public String getTempoDePreparo(){
+        return tempoDePreparo;
     }
     public List<Ingrediente> getIngredientes(){
         return ingredientes;
