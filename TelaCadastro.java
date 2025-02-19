@@ -1,13 +1,31 @@
+
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.*;
+
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-/**
- *
- * @author FCOST
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+
+    
+     
+   
+ 
 public class TelaCadastro extends javax.swing.JFrame {
+
+        private Object ingredientes;
 
     /**
      * Creates new form TelaCadastro
@@ -48,6 +66,12 @@ public class TelaCadastro extends javax.swing.JFrame {
         btEditar = new javax.swing.JButton();
         btAdicionar = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        Mopcoes = new javax.swing.JMenu();
+        JClogin = new javax.swing.JCheckBoxMenuItem();
+        JCsair = new javax.swing.JCheckBoxMenuItem();
+        jMCadastrar = new javax.swing.JMenu();
+        jCMinhasReceitas = new javax.swing.JCheckBoxMenuItem();
 
         jLabel7.setText("jLabel7");
 
@@ -170,6 +194,31 @@ public class TelaCadastro extends javax.swing.JFrame {
             }
         });
 
+        jMenuBar2.setBackground(new java.awt.Color(230, 94, 41));
+        jMenuBar2.setForeground(new java.awt.Color(230, 94, 41));
+
+        Mopcoes.setText("Opções");
+
+        JClogin.setSelected(true);
+        JClogin.setText("Login");
+        Mopcoes.add(JClogin);
+
+        JCsair.setSelected(true);
+        JCsair.setText("Sair");
+        Mopcoes.add(JCsair);
+
+        jMenuBar2.add(Mopcoes);
+
+        jMCadastrar.setText("Receitas");
+
+        jCMinhasReceitas.setSelected(true);
+        jCMinhasReceitas.setText("Minhas Receitas");
+        jMCadastrar.add(jCMinhasReceitas);
+
+        jMenuBar2.add(jMCadastrar);
+
+        setJMenuBar(jMenuBar2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -249,7 +298,7 @@ public class TelaCadastro extends javax.swing.JFrame {
                     .addComponent(btEditar)
                     .addComponent(btAdicionar)
                     .addComponent(btLimpar))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -257,20 +306,65 @@ public class TelaCadastro extends javax.swing.JFrame {
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
+        int selectRow=tbUltimasAdicoes.getSelectedRow();
+        if(selectRow!=-1){
+            DefaultTableModel model=(DefaultTableModel) tbUltimasAdicoes.getModel();
+            model.removeRow(selectRow);
+            JOptionPane.showMessageDialog(this, "Receita excluída com sucesso!");
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "Selecione a receita para excluir");
+        }
     }//GEN-LAST:event_btExcluirActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
+        int selectedRow=tbUltimasAdicoes.getSelectedRow();
+        if (selectedRow!=-1) {
+        DefaultTableModel model=(DefaultTableModel) tbUltimasAdicoes.getModel();
+        tfTitulo.setText(model.getValueAt(selectedRow, 0).toString());
+        tfIngredientes.setText(model.getValueAt(selectedRow, 1).toString());
+        tfTempoPreparo.setText(model.getValueAt(selectedRow, 2).toString());
+        JOptionPane.showMessageDialog(this, "Edite os campos e clique em adicionar para atualizar.");
+    } else {
+        JOptionPane.showMessageDialog(this, "Selecione uma receita para editar.");
+    }
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btAdicionarActionPerformed
+        String titulo=tfTitulo.getText();
+        String ingrediente =tfIngredientes.getText();
+        String tempoPreparo=tfTempoPreparo.getText();
 
+        if (titulo.trim().isEmpty()||ingrediente.trim().isEmpty()||tempoPreparo.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Preencha todos os campos antes de adicionar!", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+        DefaultTableModel model = (DefaultTableModel) tbUltimasAdicoes.getModel();
+        model.addRow(new Object[]{titulo, ingrediente, tempoPreparo});
+
+        JOptionPane.showMessageDialog(this, "Receita adicionada com sucesso!");
+        limparCampos();
+ 
+    }//GEN-LAST:event_btAdicionarActionPerformed
+    
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         // TODO add your handling code here:
+        limparCampos();
+        
     }//GEN-LAST:event_btLimparActionPerformed
+    private void limparCampos() {     
+        tfTitulo.setText("");
+        tfIngredientes.setText("");
+        tfModoPreparo.setText("");
+        tfOrigem.setText("");
+        tfTempoPreparo.setText("");
+        tfFonte.setText("");
+        
 
+    }                    
     private void tfIngredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIngredientesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfIngredientesActionPerformed
@@ -311,13 +405,19 @@ public class TelaCadastro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBoxMenuItem JClogin;
+    private javax.swing.JCheckBoxMenuItem JCsair;
+    private javax.swing.JMenu Mopcoes;
     private javax.swing.JButton btAdicionar;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btLimpar;
     private javax.swing.JLabel imgLogo;
+    private javax.swing.JCheckBoxMenuItem jCMinhasReceitas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JMenu jMCadastrar;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbAdicoes;
     private javax.swing.JLabel lbFonte;
@@ -335,4 +435,5 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JTextField tfTempoPreparo;
     private javax.swing.JTextField tfTitulo;
     // End of variables declaration//GEN-END:variables
-}
+    }
+
