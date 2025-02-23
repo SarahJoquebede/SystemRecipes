@@ -1,23 +1,13 @@
-package projetinho;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 
-import java.util.List;
-
-public class Receita {
-    String modoDePreparo;
-    double porcoes;
-    List<Ingrediente> ingredientes;
-
-    public Receita(String modoDePreparo, double porcoes, List<Ingrediente> ingredientes) {
-        this.modoDePreparo = modoDePreparo;
-        this.porcoes = porcoes;
-        this.ingredientes = ingredientes;
-    }
-
-    public void addIngrediente(Ingrediente ingrediente) {
-        this.ingredientes.add(ingrediente);
-    }
-
-    public void removeIngrediente(Ingrediente ingrediente) {
-        this.ingredientes.remove(ingrediente);
-    }
+/**
+ *
+ * @author sarah
+ */
+public class Usuario {
+    public static String nomeUsuario = null; 
+    public static String senhaUsuario=null;
 }

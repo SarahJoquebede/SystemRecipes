@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package projetinho;
+
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,7 +37,9 @@ public class CadastroUsuario extends javax.swing.JFrame {
         pfSenha = new javax.swing.JPasswordField();
         lbDigiteSeuNome = new javax.swing.JLabel();
         lbCadastrese = new javax.swing.JLabel();
+        jLLogar = new javax.swing.JLabel();
         imgPainel = new javax.swing.JLabel();
+        btLogar = new javax.swing.JButton();
         imgFundo = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -95,9 +99,24 @@ public class CadastroUsuario extends javax.swing.JFrame {
         getContentPane().add(lbCadastrese);
         lbCadastrese.setBounds(590, 110, 140, 30);
 
+        jLLogar.setText("Já tem uma conta?");
+        getContentPane().add(jLLogar);
+        jLLogar.setBounds(550, 340, 120, 16);
+
         imgPainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/PanelUser.png"))); // NOI18N
         getContentPane().add(imgPainel);
         imgPainel.setBounds(490, 30, 350, 490);
+
+        btLogar.setBackground(new java.awt.Color(255, 255, 255));
+        btLogar.setText("Já tem uma conta?");
+        btLogar.setBorder(null);
+        btLogar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLogarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btLogar);
+        btLogar.setBounds(550, 340, 140, 16);
 
         imgFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/Inserir um título.png"))); // NOI18N
         getContentPane().add(imgFundo);
@@ -118,8 +137,44 @@ public class CadastroUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_tfNomeActionPerformed
 
     private void btCriarContaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCriarContaActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here: 
+    Usuario.nomeUsuario = tfNome.getText().trim();
+    
+      if (Usuario.nomeUsuario.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Digite um nome antes de continuar!");
+        return; 
+    }
+    String nome = tfNome.getText();
+    String senha = new String(pfSenha.getPassword());
+    String confirmaSenha = new String(pfConfirmaSenha.getPassword());
+    if (nome.isEmpty() || senha.isEmpty() || confirmaSenha.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Preencha todos os campos!", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+        
+        }
+    if (!senha.equals(confirmaSenha)) {
+        JOptionPane.showMessageDialog(this, "As senhas não coincidem!", "Erro", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    Usuario.nomeUsuario = nome;
+    Usuario.senhaUsuario = senha;
+    
+    JOptionPane.showMessageDialog(this, "Conta criada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+    UsuarioEntrar login = new UsuarioEntrar();
+    login.setVisible(true);
+    login.setLocationRelativeTo(null);
+    this.dispose();
+
     }//GEN-LAST:event_btCriarContaActionPerformed
+    
+    private void btLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLogarActionPerformed
+        // TODO add your handling code here:
+    UsuarioEntrar login = new UsuarioEntrar(); 
+    login.setVisible(true);
+    login.setLocationRelativeTo(null);
+    this.dispose();
+    
+    }//GEN-LAST:event_btLogarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,8 +214,10 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btCriarConta;
+    private javax.swing.JButton btLogar;
     private javax.swing.JLabel imgFundo;
     private javax.swing.JLabel imgPainel;
+    private javax.swing.JLabel jLLogar;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lbCadastrese;
