@@ -1,19 +1,10 @@
-package projetinho;
 
-
-import projetinho.TelaPrincipal;
 import java.awt.event.ActionEvent;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import projetinho.Gravador;
-import projetinho.Receita;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -25,27 +16,15 @@ import projetinho.Receita;
  * @author FCOST
  */
 public class TelaPágina extends javax.swing.JFrame {
-      ArrayList<Receita>receitas=new ArrayList<>();
+
     /**
      * Creates new form TelaPágina
      */
   
     public TelaPágina(){
-          try {
-              receitas=(ArrayList<Receita>)Gravador.ler("receitas.data");
-          } catch (IOException ex) {
-              Logger.getLogger(TelaPágina.class.getName()).log(Level.SEVERE, null, ex);
-          } catch (ClassNotFoundException ex) {
-              Logger.getLogger(TelaPágina.class.getName()).log(Level.SEVERE, null, ex);
-          }
         initComponents();
         setLocationRelativeTo(null);
-            
-          try {
-              atualizarTabela();
-          } catch (IOException ex) {
-              Logger.getLogger(TelaPágina.class.getName()).log(Level.SEVERE, null, ex);
-          }
+        iBNomeUsuario.setText(Usuario.nomeUsuario);
     }
      
     
@@ -102,7 +81,7 @@ public class TelaPágina extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Prato", "Ingredientes", "Modo de preparo"
+                "Prato", "Ingredientes", "Modo de preparo", "Tempo médio", "Origem", "Fonte"
             }
         ));
         jScrollPane1.setViewportView(tbReceitas);
@@ -226,18 +205,6 @@ public class TelaPágina extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Por favor, selecione uma receita para excluir.", "Erro", JOptionPane.ERROR_MESSAGE);
     }
 }
-    public void atualizarTabela()throws IOException{
-        Gravador.gravar("receitas.data", receitas);
-        DefaultTableModel modelo=(DefaultTableModel)tbReceitas.getModel();
-        modelo.setNumRows(0);
-        Object coluna[]=new Object [3];
-        for(int i=0; i<=receitas.size(); i++){
-            coluna[0]=receitas.get(i).getTitulo();
-            coluna[1]=receitas.get(i).getIngrediente();
-            coluna [2]=receitas.get(i).getTempoPreparo();
-            modelo.addRow(coluna);
-        }
-    }
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
         excluirReceita();

@@ -1,6 +1,4 @@
 
-import projetinho.TelaPágina;
-import projetinho.TelaPrincipal;
 import javax.swing.JOptionPane;
 
 /*
@@ -92,7 +90,7 @@ public class UsuarioEntrar extends javax.swing.JFrame {
         imgFundo.setAutoscrolls(true);
         imgFundo.setMinimumSize(new java.awt.Dimension(880, 560));
         getContentPane().add(imgFundo);
-        imgFundo.setBounds(0, 0, 860, 540);
+        imgFundo.setBounds(0, 0, 0, 0);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
