@@ -1,7 +1,15 @@
+package projetinho;
 
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
+import projetinho.Gravador;
+import projetinho.Receita;
 
 
 /*
@@ -25,12 +33,17 @@ import javax.swing.*;
  
 public class TelaPrincipal extends javax.swing.JFrame {
 
-        private Object ingredientes;
+    private Object ingredientes;
+    ArrayList<Receita>receitas=new ArrayList<>();
 
-    /**
-     * Creates new form TelaCadastro
-     */
     public TelaPrincipal() {
+        try {
+            receitas=(ArrayList<Receita>)Gravador.ler("receitas.data");
+        } catch (IOException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
         setLocationRelativeTo(null);
         
@@ -348,6 +361,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         String titulo=tfTitulo.getText();
         String ingrediente =tfIngredientes.getText();
         String tempoPreparo=tfTempoPreparo.getText();
+        Receita user=new Receita(titulo, ingrediente, tempoPreparo);
+        receitas.add(user);
 
         if (titulo.trim().isEmpty()||ingrediente.trim().isEmpty()||tempoPreparo.trim().isEmpty()) {
         JOptionPane.showMessageDialog(this, "Preencha todos os campos antes de adicionar!", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -393,7 +408,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void abrirTelaPagina() {
     TelaPágina telaPagina = new TelaPágina(); 
     telaPagina.setVisible(true);
-    telaPagina.setLocationRelativeTo(null);
     this.dispose();
 } 
 

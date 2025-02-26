@@ -1,61 +1,48 @@
-package projetinho.com;
+package projetinho;
 
-import java.util.List;
 
-import projetinho.Ingrediente;
+
 
 public class Receita {
-    String modoDePreparo;
-    double porcoes;
-    List<Ingrediente>ingredientes;
-    String origem;
-    String tempoDePreparo;
-    public Receita(String modoDePreparo, double porcoes, List<Ingrediente>ingredientes, String origem, String tempoDePreparo){
-        this.modoDePreparo=modoDePreparo;
-        this.porcoes=porcoes;
-        this.ingredientes=ingredientes;
-        this.origem=origem;
-        this.tempoDePreparo=tempoDePreparo;
-    }
-    public String getModoDePreparo(){
-        return modoDePreparo;
-    }
-    public void setModoDePreparo(String modoDePreparo){
-        this.modoDePreparo=modoDePreparo;
-    }
-    public double getPorcoes(double porcoes){
-        return porcoes;
-    }
-    public void setPorcoes(double porcoes){
-        this.porcoes=porcoes;
-    }
-    public void setOrigem(String origem){
-        this.origem=origem;
-    }
-    public String getOrigem(){
-        return origem;
-    }
-    public void setTempoDePreparo(String tempoDePreparo){
-        this.tempoDePreparo=tempoDePreparo;
-    }
-    public String getTempoDePreparo(){
-        return tempoDePreparo;
-    }
-    public List<Ingrediente> getIngredientes(){
-        return ingredientes;
-    }
-    public void setIngredientes(List<Ingrediente>novoIngredientes){
-        this.ingredientes=novoIngredientes;
-    }
-    public void addIngrediente(Ingrediente ingrediente){
-        this.ingredientes.add(ingrediente);
-    }
-    public void removeIngredient(Ingrediente ingrediente){
-        this.ingredientes.remove(ingrediente);
+    String titulo;
+    String ingrediente;
+    String tempoPreparo;
+
+    public Receita(String titulo, String ingrediente, String tempoPreparo) {
+        this.titulo = titulo;
+        this.ingrediente = ingrediente;
+        this.tempoPreparo = tempoPreparo;
     }
 
+    public String getTitulo() {
+        return titulo;
+    }
 
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
+    public String getIngrediente() {
+        return ingrediente;
+    }
+
+    public void setIngrediente(String ingrediente) {
+        this.ingrediente = ingrediente;
+    }
+
+    public String getTempoPreparo() {
+        return tempoPreparo;
+    }
+
+    public void setTempoPreparo(String tempoPreparo) {
+        this.tempoPreparo = tempoPreparo;
+    }
+
+    @Override
+    public String toString() {
+        return "Receita{" + "titulo=" + titulo + ", ingrediente=" + ingrediente + ", tempoPreparo=" + tempoPreparo + '}';
+    }
+    
 
 
 }

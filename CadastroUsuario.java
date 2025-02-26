@@ -50,7 +50,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cozinha com Afeto - Login");
-        setMinimumSize(new java.awt.Dimension(860, 540));
+        setMinimumSize(new java.awt.Dimension(870, 580));
         getContentPane().setLayout(null);
 
         lbCrieUmaSenha.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -107,7 +107,6 @@ public class CadastroUsuario extends javax.swing.JFrame {
         getContentPane().add(imgPainel);
         imgPainel.setBounds(490, 30, 350, 490);
 
-        btLogar.setBackground(new java.awt.Color(255, 255, 255));
         btLogar.setText("Já tem uma conta?");
         btLogar.setBorder(null);
         btLogar.addActionListener(new java.awt.event.ActionListener() {

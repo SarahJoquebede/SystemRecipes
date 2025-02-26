@@ -1,7 +1,12 @@
+package projetinho;
 
+
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
+import projetinho.Gravador;
+import projetinho.Receita;
 
 
 /*
@@ -24,14 +29,16 @@ import javax.swing.*;
    
  
 public class TelaCadastro extends javax.swing.JFrame {
-
-        private Object ingredientes;
-
+    
+    private Object ingredientes;
+   
     /**
      * Creates new form TelaCadastro
      */
     public TelaCadastro() {
+    
         initComponents();
+        
     }
 
     /**

@@ -1,4 +1,6 @@
 
+import projetinho.TelaPágina;
+import projetinho.TelaPrincipal;
 import javax.swing.JOptionPane;
 
 /*
@@ -39,8 +41,8 @@ public class UsuarioEntrar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Receitas com Afeto - Entrar");
-        setMaximumSize(new java.awt.Dimension(860, 540));
-        setMinimumSize(new java.awt.Dimension(860, 540));
+        setMaximumSize(new java.awt.Dimension(870, 580));
+        setMinimumSize(new java.awt.Dimension(870, 580));
         getContentPane().setLayout(null);
 
         tfIniciarSeção.setBackground(new java.awt.Color(0, 0, 0));
