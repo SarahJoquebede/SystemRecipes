@@ -1,10 +1,14 @@
 
-import java.awt.event.ActionEvent;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import java.awt.event.ActionListener;
+
+
+
+
+
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -16,15 +20,17 @@ import java.awt.event.ActionListener;
  * @author FCOST
  */
 public class TelaPágina extends javax.swing.JFrame {
-
+      
     /**
      * Creates new form TelaPágina
      */
   
     public TelaPágina(){
+          
         initComponents();
         setLocationRelativeTo(null);
-        iBNomeUsuario.setText(Usuario.nomeUsuario);
+       iBNomeUsuario.setText(Usuario.nomeUsuario);    
+          
     }
      
     
@@ -67,7 +73,7 @@ public class TelaPágina extends javax.swing.JFrame {
             .addGroup(pnCimaLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addComponent(imgLogo)
-                .addContainerGap(748, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnCimaLayout.setVerticalGroup(
             pnCimaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,7 +87,7 @@ public class TelaPágina extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Prato", "Ingredientes", "Modo de preparo", "Tempo médio", "Origem", "Fonte"
+                "Prato", "Origem", "Fonte", "Tempo", "Ingredientes", "Modo de preparo"
             }
         ));
         jScrollPane1.setViewportView(tbReceitas);
@@ -124,6 +130,11 @@ public class TelaPágina extends javax.swing.JFrame {
 
         JClogin.setSelected(true);
         JClogin.setText("Login");
+        JClogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JCloginActionPerformed(evt);
+            }
+        });
         Mopcoes.add(JClogin);
 
         jCVoltar.setSelected(true);
@@ -205,6 +216,20 @@ public class TelaPágina extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Por favor, selecione uma receita para excluir.", "Erro", JOptionPane.ERROR_MESSAGE);
     }
 }
+   public void carregarDadosTabela(DefaultTableModel modeloOrigem) {
+    DefaultTableModel modeloDestino = (DefaultTableModel) tbReceitas.getModel();
+     modeloDestino.setRowCount(0);
+     for (int i = 0; i < modeloOrigem.getRowCount(); i++) {
+        Object[] linha = new Object[modeloOrigem.getColumnCount()];
+        
+        for (int j = 0; j < modeloOrigem.getColumnCount(); j++) {
+            linha[j] = modeloOrigem.getValueAt(i, j);
+        }
+        
+        modeloDestino.addRow(linha);
+    }
+}
+    
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
         excluirReceita();
@@ -243,6 +268,15 @@ public class TelaPágina extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jCVoltarActionPerformed
 
+    private void JCloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCloginActionPerformed
+        // TODO add your handling code here:
+        abrirTelaLog();
+    }//GEN-LAST:event_JCloginActionPerformed
+    private void abrirTelaLog() {
+    UsuarioEntrar telaLog = new UsuarioEntrar(); 
+    telaLog.setVisible(true);
+    this.dispose();
+} 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

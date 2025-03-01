@@ -17,6 +17,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
      */
     public CadastroUsuario() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -94,14 +95,15 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         lbCadastrese.setBackground(new java.awt.Color(0, 0, 0));
         lbCadastrese.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        lbCadastrese.setForeground(new java.awt.Color(254, 136, 1));
+        lbCadastrese.setForeground(new java.awt.Color(204, 204, 204));
         lbCadastrese.setText("Cadastre-se");
         getContentPane().add(lbCadastrese);
         lbCadastrese.setBounds(590, 110, 140, 30);
 
+        jLLogar.setForeground(new java.awt.Color(255, 102, 51));
         jLLogar.setText("Já tem uma conta?");
         getContentPane().add(jLLogar);
-        jLLogar.setBounds(550, 340, 120, 16);
+        jLLogar.setBounds(560, 340, 130, 20);
 
         imgPainel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/PanelUser.png"))); // NOI18N
         getContentPane().add(imgPainel);

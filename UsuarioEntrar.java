@@ -17,6 +17,7 @@ public class UsuarioEntrar extends javax.swing.JFrame {
      */
     public UsuarioEntrar() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -61,7 +62,7 @@ public class UsuarioEntrar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(tpNome);
-        tpNome.setBounds(550, 220, 220, 22);
+        tpNome.setBounds(550, 220, 220, 30);
 
         btEntrar.setBackground(new java.awt.Color(254, 136, 1));
         btEntrar.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
@@ -90,7 +91,7 @@ public class UsuarioEntrar extends javax.swing.JFrame {
         imgFundo.setAutoscrolls(true);
         imgFundo.setMinimumSize(new java.awt.Dimension(880, 560));
         getContentPane().add(imgFundo);
-        imgFundo.setBounds(0, 0, 0, 0);
+        imgFundo.setBounds(0, 0, 860, 540);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -117,7 +118,7 @@ public class UsuarioEntrar extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Nome ou senha incorretos!", "Erro", JOptionPane.ERROR_MESSAGE);
     }
     String nome = tfNome.getText(); 
-    new TelaPágina().setVisible(true); 
+    new UsuarioEntrar().setVisible(true); 
     this.dispose(); 
 
     

@@ -38,6 +38,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         initComponents();
         setLocationRelativeTo(null);
+       
+
         
     }
 
@@ -156,11 +158,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Prato", "Ingredientes", "Tempo de preparo"
+                "Prato", "Origem", "Tempo", "Fonte", "Ingredientes", "Modo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -280,7 +282,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnCima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbTitulo)
                     .addComponent(lbOrigem))
@@ -350,9 +352,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
         // TODO add your handling code here:
+        
         String titulo=tfTitulo.getText();
         String ingrediente =tfIngredientes.getText();
         String tempoPreparo=tfTempoPreparo.getText();
+        String origem=tfOrigem.getText();
+        String fonte=tfFonte.getText();
+        String modo=tfModoPreparo.getText();
         
 
         if (titulo.trim().isEmpty()||ingrediente.trim().isEmpty()||tempoPreparo.trim().isEmpty()) {
@@ -361,13 +367,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
         DefaultTableModel model = (DefaultTableModel) tbUltimasAdicoes.getModel();
-        model.addRow(new Object[]{titulo, ingrediente, tempoPreparo});
+        model.addRow(new Object[]{titulo, origem, tempoPreparo, fonte, ingrediente,modo});
 
         JOptionPane.showMessageDialog(this, "Receita adicionada com sucesso!");
         limparCampos();
  
     }//GEN-LAST:event_btAdicionarActionPerformed
+    private void abrirTelaPagina() {
+    TelaPágina telaPagina = new TelaPágina();
+
+    DefaultTableModel modeloOrigem = (DefaultTableModel) tbUltimasAdicoes.getModel();
+    telaPagina.carregarDadosTabela(modeloOrigem);
     
+    telaPagina.setVisible(true);
+}
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         // TODO add your handling code here:
         limparCampos();
@@ -396,11 +409,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         abrirTelaPagina();
     }//GEN-LAST:event_jCMinhasReceitasActionPerformed
-    private void abrirTelaPagina() {
-    TelaPágina telaPagina = new TelaPágina(); 
-    telaPagina.setVisible(true);
-    this.dispose();
-} 
+
 
     /**
      * @param args the command line arguments
